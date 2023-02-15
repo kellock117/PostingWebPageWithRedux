@@ -1,0 +1,22 @@
+create database assessment;
+use assessment;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'assessment';
+FLUSH PRIVILEGES;
+
+CREATE TABLE USER (
+userName	VARCHAR(32) NOT NULL,
+password	VARCHAR(60) NOT NULL,
+    CONSTRAINT userPK PRIMARY KEY(userName));
+    
+CREATE TABLE POST (
+postID	 INT AUTO_INCREMENT NOT NULL,
+title	 VARCHAR(255) NOT NULL,
+userName VARCHAR(32) NOT NULL,
+body	 TEXT NOT NULL,
+    CONSTRAINT postPK PRIMARY KEY(postID),
+    FOREIGN KEY(userName) REFERENCES USER(userName) ON DELETE CASCADE);
+    
+INSERT INTO USER VALUE("t1", "t1");
+SELECT * FROM USER;
+SELECT * FROM POST;
